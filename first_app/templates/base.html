@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+        }
+        .sidebar {
+            height: 150vh;
+            width: 250px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+        }
+        .sidebar h3, .sidebar h4 {
+            color: #fff;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+        }
+        .sidebar a:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .submenu {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Object Canvas Technology</h2>
+        <a class="nav-link active text-white" aria-current="page" href="{% url "home" %}">Home</a>
+        <h4>Basic Modules</h4>
+        <div class="nav flex-column submenu">
+            <a href="{% url 'list_company'%}">Companies</a>
+            <a href="#">Categories</a>
+            <a href="#">Color</a>
+            <a href="#">Products</a>
+            <a href="#">Sale Offer</a>
+            <a href="#">Bank</a>
+            <a href="#">Godowns</a>
+        </div>
+        <a href="#">CardType</a>
+        <a href="#">CardType Setup</a>
+        <a href="#">Customers & Suppliers</a>
+        <a href="#">Inventory Management</a>
+        <a href="#">Account Management</a>
+        <a href="#">MIS Report</a>
+        <a href="#">Accounting Report</a>
+        <a href="#">SMS Service</a>
+
+        {% comment %} <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{% url "home" %}">Home</a>
+        </li> {% endcomment %}
+
+        {% if user.is_authenticated %}
+            <a href="{% url "profile" %}" class="btn btn-outline-warning text-white mx-4">Profile</a> 
+            <a href="{% url "logout" %}" class="btn btn-outline-warning text-white">Logout</a> 
+
+            {% else %}
+            <a href="{% url "login" %}" class="btn btn-outline-warning text-white">Login</a>          
+            <a href="{% url "register" %}" class="btn btn-outline-success mx-4 text-white">Sing Up</a>
+        {% endif %}
+
+    </div>
+    {% block body %}  {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div style="width:50%; margin:auto;">
+    <h1>Welcome To New Company Creation</h1>
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Company created successfully!
+        </div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <button class="btn btn-info" type="submit">Submit</button>
+    </form>
+</div> 
+{% endblock %}
